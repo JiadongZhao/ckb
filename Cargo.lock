@@ -675,7 +675,8 @@ dependencies = [
  "log 0.4.11",
  "once_cell",
  "regex",
- "sentry",
+ "sentry-core",
+ "sentry-log",
 ]
 
 [[package]]
@@ -777,7 +778,7 @@ dependencies = [
  "rand 0.6.5",
  "resolve",
  "secp256k1",
- "sentry",
+ "sentry-core",
  "serde",
  "serde_json",
  "snap",
@@ -1080,7 +1081,7 @@ dependencies = [
  "lru-cache",
  "rand 0.6.5",
  "ratelimit_meter",
- "sentry",
+ "sentry-core",
  "tempfile",
 ]
 
@@ -4194,7 +4195,6 @@ dependencies = [
  "sentry-contexts",
  "sentry-core",
  "sentry-failure",
- "sentry-log",
  "sentry-panic",
 ]
 

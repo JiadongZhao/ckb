@@ -375,7 +375,7 @@ impl NetworkState {
                 addr
             );
             if dial_started.elapsed() > DIAL_HANG_TIMEOUT {
-                use sentry::{capture_message, with_scope, Level};
+                use sentry_core::{capture_message, with_scope, Level};
                 with_scope(
                     |scope| scope.set_fingerprint(Some(&["ckb-network", "dialing-timeout"])),
                     || {
@@ -640,7 +640,7 @@ impl<T: ExitHandler> ServiceHandle for EventHandler<T> {
             }
             ServiceError::ProtocolHandleError { proto_id, error } => {
                 debug!("ProtocolHandleError: {:?}, proto_id: {}", error, proto_id);
-                use sentry::{capture_message, with_scope, Level};
+                use sentry_core::{capture_message, with_scope, Level};
                 with_scope(
                     |scope| scope.set_fingerprint(Some(&["ckb-network", "p2p-service-error"])),
                     || {

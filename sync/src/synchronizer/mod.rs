@@ -557,7 +557,7 @@ impl CKBProtocolHandler for Synchronizer {
         };
 
         debug!("received msg {} from {}", msg.item_name(), peer_index);
-        let sentry_hub = sentry::Hub::current();
+        let sentry_hub = sentry_core::Hub::current();
         let _scope_guard = sentry_hub.push_scope();
         sentry_hub.configure_scope(|scope| {
             scope.set_tag("p2p.protocol", "synchronizer");
