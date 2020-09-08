@@ -6,4 +6,3 @@ authors = ["Nervos <dev@nervos.org>"]
 edition = "2018"
 
 [dependencies]
-metrics = "~0.12.1"

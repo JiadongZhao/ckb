@@ -1,7 +1,5 @@
 use std::time::{Duration, Instant};
 
-pub use metrics::{self as internal, SetRecorderError};
-
 pub struct Timer(Instant);
 
 impl Timer {
@@ -17,7 +15,5 @@ impl Timer {
 // Ref: https://docs.rs/metrics/*/metrics/index.html#macros
 #[macro_export(local_inner_macros)]
 macro_rules! metrics {
-    ($type:ident, $( $args:tt )*) => {
-        $crate::internal::$type!($( $args )*);
-    }
+    ($type:ident, $( $args:tt )*) => {};
 }
