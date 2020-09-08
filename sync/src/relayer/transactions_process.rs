@@ -11,7 +11,7 @@ use ckb_types::{
 use ckb_util::LinkedHashSet;
 use ckb_verification::cache::CacheEntry;
 use ckb_verification::TransactionError;
-use sentry_core::{capture_message, with_scope, Level};
+use sentry::{capture_message, with_scope, Level};
 use std::sync::Arc;
 use std::time::Duration;
 

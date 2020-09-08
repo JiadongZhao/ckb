@@ -5,7 +5,7 @@ use ckb_logger_service::{self, LoggerInitGuard};
 
 pub struct SetupGuard {
     _logger_guard: LoggerInitGuard,
-    _sentry_guard: Option<sentry::ClientInitGuard>,
+    _sentry_guard: Option<sentry::internals::ClientInitGuard>,
 }
 
 impl SetupGuard {
