@@ -1,6 +1,10 @@
 use ckb_build_info::Version;
 use sentry::{
-    configure_scope, init, protocol::Event, types::Dsn, ClientInitGuard, ClientOptions, Level,
+    configure_scope, init,
+    integrations::panic::register_panic_handler,
+    internals::{ClientInitGuard, Dsn},
+    protocol::Event,
+    ClientOptions, Level,
 };
 use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
@@ -27,6 +31,8 @@ impl SentryConfig {
                     scope.set_extra("org_contact", org_contact.clone().into());
                 }
             });
+
+            register_panic_handler();
         }
 
         guard
