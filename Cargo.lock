@@ -166,6 +166,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "cf1de2fe8c75bc145a2f577add951f8134889b4795d47466a54a5c846d691693"
 
 [[package]]
+name = "bitmaps"
+version = "2.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "031043d04099746d8db04daf1fa424b2bc8bd69d92b25962dcde24da39ab64a2"
+dependencies = [
+ "typenum",
+]
+
+[[package]]
 name = "blake2b-rs"
 version = "0.1.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1340,7 +1349,7 @@ dependencies = [
  "num-traits",
  "rand_core 0.5.1",
  "rand_os 0.2.2",
- "rand_xoshiro",
+ "rand_xoshiro 0.3.1",
  "rayon",
  "serde",
  "serde_derive",
@@ -2300,6 +2309,20 @@ dependencies = [
  "rand 0.4.6",
  "url 1.7.2",
  "xmltree",
+]
+
+[[package]]
+name = "im"
+version = "14.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "696059c87b83c5a258817ecd67c3af915e3ed141891fc35a1e79908801cf0ce7"
+dependencies = [
+ "bitmaps",
+ "rand_core 0.5.1",
+ "rand_xoshiro 0.4.0",
+ "sized-chunks",
+ "typenum",
+ "version_check",
 ]
 
 [[package]]
@@ -3575,6 +3598,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "rand_xoshiro"
+version = "0.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a9fcdd2e881d02f1d9390ae47ad8e5696a9e4be7b547a1da2afbc61973217004"
+dependencies = [
+ "rand_core 0.5.1",
+]
+
+[[package]]
 name = "ratelimit_meter"
 version = "5.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3920,26 +3952,16 @@ checksum = "388a1df253eca08550bef6c72392cfe7c30914bf41df5269b68cbd6ff8f570a3"
 [[package]]
 name = "sentry"
 version = "0.19.1"
-source = "git+https://github.com/nervosnetwork/sentry-rust?tag=sentry-v0.19.1-patch.1#1cdb9ff77562df2bf0e091940d762f285d686000"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ebd0927ec4a785fc4328abe9089afbe074b3874983b3373fc328a73a9f8310cb"
 dependencies = [
  "httpdate",
  "reqwest 0.10.8",
- "sentry-backtrace 0.19.1 (git+https://github.com/nervosnetwork/sentry-rust?tag=sentry-v0.19.1-patch.1)",
+ "sentry-backtrace",
  "sentry-contexts",
  "sentry-core",
  "sentry-failure",
  "sentry-panic",
-]
-
-[[package]]
-name = "sentry-backtrace"
-version = "0.19.1"
-source = "git+https://github.com/nervosnetwork/sentry-rust?tag=sentry-v0.19.1-patch.1#1cdb9ff77562df2bf0e091940d762f285d686000"
-dependencies = [
- "backtrace",
- "lazy_static",
- "regex",
- "sentry-core",
 ]
 
 [[package]]
@@ -3957,7 +3979,8 @@ dependencies = [
 [[package]]
 name = "sentry-contexts"
 version = "0.19.1"
-source = "git+https://github.com/nervosnetwork/sentry-rust?tag=sentry-v0.19.1-patch.1#1cdb9ff77562df2bf0e091940d762f285d686000"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d607b3be0593e026f1c089f0086c244429fe3026eca8e075e8f9e834703ee4c0"
 dependencies = [
  "hostname",
  "lazy_static",
@@ -3971,8 +3994,10 @@ dependencies = [
 [[package]]
 name = "sentry-core"
 version = "0.19.1"
-source = "git+https://github.com/nervosnetwork/sentry-rust?tag=sentry-v0.19.1-patch.1#1cdb9ff77562df2bf0e091940d762f285d686000"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c9c118347dc0958e66f8b0f3866f0d85bbf8a63bffe64603baebe3f989e929e6"
 dependencies = [
+ "im",
  "lazy_static",
  "rand 0.7.3",
  "sentry-types",
@@ -3981,10 +4006,11 @@ dependencies = [
 [[package]]
 name = "sentry-failure"
 version = "0.19.1"
-source = "git+https://github.com/nervosnetwork/sentry-rust?tag=sentry-v0.19.1-patch.1#1cdb9ff77562df2bf0e091940d762f285d686000"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8599d375040329e106653a133a1d876af53df8b504cff1de7b6f4471fd41eec3"
 dependencies = [
  "failure",
- "sentry-backtrace 0.19.1 (git+https://github.com/nervosnetwork/sentry-rust?tag=sentry-v0.19.1-patch.1)",
+ "sentry-backtrace",
  "sentry-core",
 ]
 
@@ -3995,23 +4021,25 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8e7af2bac3f98831b6e674666a41731592eba9fc0730c78feb7429ceae7f8832"
 dependencies = [
  "log 0.4.11",
- "sentry-backtrace 0.19.1 (registry+https://github.com/rust-lang/crates.io-index)",
+ "sentry-backtrace",
  "sentry-core",
 ]
 
 [[package]]
 name = "sentry-panic"
 version = "0.19.1"
-source = "git+https://github.com/nervosnetwork/sentry-rust?tag=sentry-v0.19.1-patch.1#1cdb9ff77562df2bf0e091940d762f285d686000"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e3943c3fc7fff39244158b625bb2235a27e7e4d0b862b5e52cb57db51e6a6e6e"
 dependencies = [
- "sentry-backtrace 0.19.1 (git+https://github.com/nervosnetwork/sentry-rust?tag=sentry-v0.19.1-patch.1)",
+ "sentry-backtrace",
  "sentry-core",
 ]
 
 [[package]]
 name = "sentry-types"
 version = "0.19.1"
-source = "git+https://github.com/nervosnetwork/sentry-rust?tag=sentry-v0.19.1-patch.1#1cdb9ff77562df2bf0e091940d762f285d686000"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "87b41bac48a3586249431fa9efb88cd1414c3455117eb57c02f5bda9634e158d"
 dependencies = [
  "chrono",
  "debugid",
@@ -4115,6 +4143,16 @@ name = "siphasher"
 version = "0.2.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0b8de496cf83d4ed58b6be86c3a275b8602f6ffe98d3024a869e124147a9a3ac"
+
+[[package]]
+name = "sized-chunks"
+version = "0.5.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d59044ea371ad781ff976f7b06480b9f0180e834eda94114f2afb4afc12b7718"
+dependencies = [
+ "bitmaps",
+ "typenum",
+]
 
 [[package]]
 name = "slab"
