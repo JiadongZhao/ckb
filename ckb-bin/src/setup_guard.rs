@@ -6,7 +6,7 @@ use ckb_metrics_service::{self, Guard as MetricsInitGuard};
 
 pub struct SetupGuard {
     _logger_guard: LoggerInitGuard,
-    _sentry_guard: Option<sentry::internals::ClientInitGuard>,
+    _sentry_guard: Option<sentry::ClientInitGuard>,
     _metrics_guard: MetricsInitGuard,
 }
 

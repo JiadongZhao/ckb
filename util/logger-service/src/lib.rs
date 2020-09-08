@@ -406,7 +406,8 @@ impl Log for Logger {
             .collect::<Vec<_>>();
         if is_match || !extras.is_empty() {
             if self.emit_sentry_breadcrumbs {
-                use sentry::{add_breadcrumb, integrations::log::breadcrumb_from_record};
+                use sentry_core::add_breadcrumb;
+                use sentry_log::breadcrumb_from_record;
                 add_breadcrumb(|| breadcrumb_from_record(record));
             }
 
